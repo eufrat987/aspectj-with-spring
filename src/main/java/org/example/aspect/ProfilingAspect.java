@@ -4,7 +4,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 @Aspect
@@ -25,6 +24,10 @@ public class ProfilingAspect {
 
     @Pointcut("execution(public * org.example.domainlz..*.*(..))")
     public void methodsToBeProfiled() {
+    }
+
+    public static ProfilingAspect aspectOf() {
+        return new ProfilingAspect();
     }
 
 }
